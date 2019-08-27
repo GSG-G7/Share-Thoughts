@@ -22,6 +22,8 @@
   "homepage": "https://github.com/GSG-G7/Share-Thoughts#readme",
   "devDependencies": {
     "eslint": "^6.2.2",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
     "nodemon": "^1.19.1",
     "supertest": "^4.0.2",
     "tap-spec": "^5.0.0",
