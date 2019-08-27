@@ -1,5 +1,5 @@
 {
-  "name": "Share-Thoughts",
+  "name": "sharethoughts",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,7 +7,9 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "NODE_ENV=test node test/index.test.js | tap-spec",
+    "dev": "NODE_ENV=development node server/index.js",
+    "start": " node server/index.js"
   },
   "repository": {
     "type": "git",
