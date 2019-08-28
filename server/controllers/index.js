@@ -2,6 +2,7 @@ const router = require('express').Router();
 
 const { login } = require('./login');
 const { clientError, serverError } = require('./error');
+const { signupData } = require('./signup');
 
 router.get('/', (req, res) => {
   res.render('home');
@@ -17,10 +18,7 @@ router.get('/signup', (req, res) => {
   res.render('signup');
 });
 
-router.post('/signup-data', (req, res) => {
-  console.log(req.body);
-  res.redirect('/posts');
-});
+router.post('/signup-data', signupData);
 
 router.get('/profile', (req, res) => {
   res.render('profile');
@@ -30,5 +28,5 @@ router.get('/posts', (req, res) => {
 });
 
 router.use(clientError);
-router.use(serverError);
+// router.use(serverError);
 module.exports = router;
