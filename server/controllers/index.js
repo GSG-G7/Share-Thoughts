@@ -20,6 +20,7 @@ router.get('/signup', (req, res) => {
 
 router.post('/signup-data', (req, res) => {
   console.log(req.body);
+
   res.redirect('/posts');
 });
 
