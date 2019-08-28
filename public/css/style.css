@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700|Montserrat:400,700|Roboto:400,700&display=swap');
+
+/*
+font-family: 'Roboto', sans-serif;
+font-family: 'Lato', sans-serif;
+font-family: 'Montserrat', sans-serif;
+*/
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 10px 20px;
+  background: #eee;
+}
+
+.header-login {
+  background: #333;
+  color: #fff;
+  font-weight: 700;
+  padding: 5px 10px;
+  text-decoration: none;
+}
+
+.home {
+  width: 100%;
+  height: 90vh;
+  text-align: center;
+  position: relative;
+}
+
+.home-intro {
+  width: 100%;
+  height: 60vh;
+  padding: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.home-heading {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 20px 0;
+}
+
+.home-paragraph {
+  color: rgb(110, 110, 110);
+  margin: 10px 0 30px 0;
+}
+
+.home-signup {
+  background: rgb(27, 152, 255);
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 40px;
+  font-weight: 700;
+}
+
+.login,
+.signup {
+  width: 100%;
+  height: 60vh;
+  padding: 20px;
+}
+
+.login-form,
+.signup-form {
+  width: 70%;
+  margin: 0 auto;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-form input,
+.signup-form input,
+.signup-form select {
+  display: block;
+  margin: 15px 0;
+  padding: 10px 20px;
+  border: 1px solid rgb(27, 152, 255);
+  outline: none;
+}
+
+.login-button,
+.signup-button {
+  background: rgb(27, 152, 255);
+  color: #fff;
+  font-weight: 700;
+}
+
+.header-nav {
+  width: 100%;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-list ul {
+  display: none;
+}
+
+.posts {
+  width: 100%;
+  padding: 20px;
+  min-height: 90vh;
+}
+
+.post {
+  background: #eee;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.post .top {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.post .top .image {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.post .top .user-time span {
+  display: block;
+}
+
+.post .content {
+  margin: 5px 0 0 0;
+}
+
+.post .comments {
+  margin: 10px 0 0 0;
+}
+
+.post .comments img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.footer {
+  width: 100%;
+  text-align: center;
+  background: #eee;
+  padding: 10px 20px;
+  position: absolute;
+  bottom: 0;
+}
