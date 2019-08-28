@@ -1,32 +1,30 @@
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+require('env2')('./secret.env');
 const { usersData } = require('../database/queries/login');
 
-const login = (req, res) => {
+const secret = process.env.SECRET_KEY;
+
+
+const login = (req, res, next) => {
   const { email, password } = req.body;
   // We will take the email from the user
-  usersData()
-    .then((result) => result.rows)
-    .then((result) => result.forEach((user) => {
-      // We will compare it to all email in our users table
-      if (user.email === email) {
-        //  we will compare the hashed passowrd here
-        // If it's found we will then compare the passwords
-        if (user.password === password) {
-          // If wrong he should not be logged in
-          console.log('Good passwprd');
+  usersData(email)
+    .then((result) => {
+      if (result.rows.length === 0) res.send('not signed up');
+      const hashedPassword = result.rows[0].password;
+      bcrypt.compare(password, hashedPassword, (err, value) => {
+        if (value) {
+          const accessToken = jwt.sign({ id: result.id, password: result.password }, secret);
+          res.cookie('access', accessToken);
+          res.cookie('userid', result.rows[0].id);
           res.redirect('/posts');
         } else {
-          // If it is then we compare the passwords if right will direct him to posts
-          console.log('Wrong Password');
           res.send('Wrong Password');
         }
-      } else {
-        // If not he should not be logged in
-        console.log('Your Not signed up');
-        res.send('Your Not signed up');
-      }
-    }))
-    .then((result) => console.log(result))
-    .catch((err) => console.log(err));
+      });
+    })
+    .catch((err) => next(err));
 };
 
 module.exports = {

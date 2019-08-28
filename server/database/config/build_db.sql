@@ -4,7 +4,7 @@ create table users (
   id serial Primary key,
   name varchar(20),
   email varchar UNIQUE,
-  password varchar(20),
+  password text,
   imgUrl varchar,
   gender varchar(10),
   birthday varchar,
