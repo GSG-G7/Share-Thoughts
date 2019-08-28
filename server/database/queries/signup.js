@@ -1,9 +1,10 @@
 const connection = require('../config/connection');
 
 const signup = (userData) => {
-  connection.query(
-    'insert into users (name,email,password,imgUrl,gender,birthday, country, bio) values ($1,$2,$3,$4,$5,$6,$7,$8) returning *',
-    [
+  const sql = {
+    text:
+      'insert into users (name,email,password,imgUrl,gender,birthday, country, bio) values ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *',
+    values: [
       userData.username,
       userData.email,
       userData.password,
@@ -13,6 +14,7 @@ const signup = (userData) => {
       userData.country,
       userData.bio,
     ],
-  );
+  };
+  return connection.query(sql);
 };
-module.exports = signup;
+module.exports = { signup };
