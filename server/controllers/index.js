@@ -1,4 +1,6 @@
 const router = require('express').Router();
+
+const { login } = require('./login');
 const { clientError, serverError } = require('./error');
 
 router.get('/', (req, res) => {
@@ -9,10 +11,7 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-router.post('/login-data', (req, res) => {
-  console.log(req.body);
-  res.redirect('/posts');
-});
+router.post('/login-data', login);
 
 router.get('/signup', (req, res) => {
   res.render('signup');

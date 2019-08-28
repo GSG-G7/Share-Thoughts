@@ -1,7 +1,7 @@
 const { Pool } = require('pg');
-require('env2')('./config.env')
+require('env2')('./config.env');
 
-let dbUrl = process.env.DB_URL;
+const dbUrl = process.env.DB_URL;
 
 const options = {
   connectionString: dbUrl,
