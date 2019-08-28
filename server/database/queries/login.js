@@ -1,6 +1,6 @@
 const connection = require('../config/connection');
 
-const usersData = () => connection.query('select id, email, password from  users');
+const usersData = (email) => connection.query('select id, email, password from  users where users.email = $1', [email]);
 
 module.exports = {
   usersData,
