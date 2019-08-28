@@ -2,10 +2,10 @@ BEGIN;
 DROP table if exists users, tweets, comments CASCADE;
 create table users (
   id serial Primary key,
-  name varchar(20),
+  name text,
   email varchar UNIQUE,
   password text,
-  imgUrl varchar,
+  imgUrl text,
   gender varchar(10),
   birthday varchar,
   country varchar(30),

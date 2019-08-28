@@ -5,8 +5,6 @@ require('env2')('./secret.env');
 const secret = process.env.SECRET_KEY;
 const { signup } = require('../database/queries/signup');
 
-
-
 const signupData = (req, res, next) => {
   const { password } = req.body;
 
@@ -14,7 +12,10 @@ const signupData = (req, res, next) => {
     signup(req.body, hashedPassword)
       .then((result) => result.rows[0])
       .then((result) => {
-        const accessToken = jwt.sign({ id: result.id, password: result.password }, secret);
+        const accessToken = jwt.sign(
+          { id: result.id, password: result.password },
+          secret,
+        );
         res.cookie('access', accessToken);
         res.cookie('userid', result.id);
         res.redirect('/posts');
@@ -22,7 +23,5 @@ const signupData = (req, res, next) => {
       .catch((err) => next(err));
   });
 };
-
-
 
 module.exports = { signupData };

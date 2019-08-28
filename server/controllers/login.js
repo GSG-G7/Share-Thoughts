@@ -5,7 +5,6 @@ const { usersData } = require('../database/queries/login');
 
 const secret = process.env.SECRET_KEY;
 
-
 const login = (req, res, next) => {
   const { email, password } = req.body;
   // We will take the email from the user
@@ -15,7 +14,10 @@ const login = (req, res, next) => {
       const hashedPassword = result.rows[0].password;
       bcrypt.compare(password, hashedPassword, (err, value) => {
         if (value) {
-          const accessToken = jwt.sign({ id: result.id, password: result.password }, secret);
+          const accessToken = jwt.sign(
+            { id: result.id, password: result.password },
+            secret,
+          );
           res.cookie('access', accessToken);
           res.cookie('userid', result.rows[0].id);
           res.redirect('/posts');
