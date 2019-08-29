@@ -5,8 +5,10 @@ require('env2')('./secret.env');
 const secret = process.env.SECRET_KEY;
 
 const { login } = require('./login');
+const { newTweet } = require('./addtweet');
 const { clientError, serverError } = require('./error');
 const { signupData } = require('./signup');
+const { userTweets } = require('./getUserTweet');
 
 router.get('/', (req, res) => {
   if (req.cookies.access) {
@@ -30,11 +32,12 @@ router.get('/signup', (req, res) => {
   res.render('signup');
 });
 
+router.post('/addpost', newTweet);
+
 router.post('/signup-data', signupData);
 
-router.get('/profile', (req, res) => {
-  res.render('profile');
-});
+router.get('/profile', userTweets);
+
 router.get('/posts', (req, res) => {
   if (req.cookies.access) {
     jwt.verify(req.cookies.access, secret, (error, value) => {
@@ -53,5 +56,5 @@ router.get('/logout', (req, res) => {
 });
 
 router.use(clientError);
-router.use(serverError);
+// router.use(serverError);
 module.exports = router;

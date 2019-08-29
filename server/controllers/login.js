@@ -14,8 +14,9 @@ const login = (req, res, next) => {
       const hashedPassword = result.rows[0].password;
       bcrypt.compare(password, hashedPassword, (err, value) => {
         if (value) {
+          // console.log(result.rows[0].id, '255');
           const accessToken = jwt.sign(
-            { id: result.id, password: result.password },
+            { id: result.rows[0].id, password: result.rows[0].password }, // edit
             secret,
           );
           res.cookie('access', accessToken);
