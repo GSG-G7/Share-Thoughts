@@ -7,12 +7,20 @@
         <div class="header__list">
             <a>Username</a>
             <ul>
-                <li><a>profile</a></li>
-                <li><a>logout</a></li>
+                <li><a href="#">profile</a></li>
+                <li><a href="/logout">logout</a></li>
             </ul>
         </div>
     </nav>
 </header>
+
+<section class="profile">
+    <form action="/addpost" method="POST">
+        <input type="text" name="tweettime" placeholder="time">
+        <input type="text" name="tweettext" placeholder="Enter your new post">
+        <input type="submit" name="submit" value="submit">
+    </form>
+</section>
 
 <div class="profile">
     <div class="image">
@@ -25,7 +33,7 @@
         <div class="post">
             <div class="top">
                 <img src="" alt="">
-                <span>username</span>
+                <span>username --- </span>
                 <span>date</span>
             </div>
             <div class="content">
@@ -40,4 +48,25 @@
             </div>
         </div>
     </div>
-    </section>
+</div>
+
+<div>
+    <div>
+        <img src="" alt="">
+        <span>username --- </span>
+        <span>date</span>
+    </div>
+    <div>
+        {{#each newpost}}
+        <p>{{this.tweetcontent}}</p>
+        <p>{{this.tweetpublishtime}}</p>
+        {{/each}}
+    </div>
+    <div class="comments">
+        <ul>
+            <li>{{newcomment}}</li>
+        </ul>
+    </div>
+</div>
+
+</section>

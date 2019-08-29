@@ -1,10 +1,12 @@
 const connection = require('../config/connection');
 
-const postTweet = (tweetData, userID) => {
-  connection.query(
-    'insert into tweets (user_id,tweetcontent,tweetpublishTime) values ($1,$2,$3) returning *',
-    [userID, tweetData.tweettext, tweetData.tweettime],
+const postTweet = (userID, tweetData) => {
+  console.log(111111, userID);
+  console.log(22222, tweetData);
+
+  return connection.query(
+    'insert into tweets (tweetcontent,tweetpublishTime,user_id) values ($1,$2,$3) returning *;',
+    [tweetData.tweettext, new Date(), userID],
   );
 };
-
-module.eports = postTweet;
+module.exports = { postTweet };
